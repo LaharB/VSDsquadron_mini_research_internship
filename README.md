@@ -33,11 +33,11 @@ The object file **sum1ton.o** is created
 
 ![Alt text](<O1 mode riscv compiling .png>)
 
-After the compialtion and creation of object file, we go to a new terminal and use **cat sum1ton.c** to display the code on th terminal and use the following command to see the assembly level instructions : 
+After the compilation and creation of object file, we go to a new terminal and use **cat sum1ton.c** to display the code on th terminal and use the following command to see the assembly level instructions : 
 
 <mark>riscv64-unknown-elf-objdump -d sum1ton.o | less</mark>
 
-**Note** : We use **| less** to see less number of instrcutions and our main concern is with the **main()** part of the code so we use **/main** to go that part and press **n** to enter it as shown: 
+**Note** : We use **| less** to see less number of instructions and our main concern is with the **main()** part of the code so we use **/main** to go that part and press **n** to enter it as shown: 
 
 ![Alt text](<number of instructions for O1 mode.png>)
 
