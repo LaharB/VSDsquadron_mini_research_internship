@@ -46,7 +46,6 @@ Then we count the number of instructions for the execution of the **main()** par
 ![Alt text](<O1 mode address difference.png>)
 ![Alt text](<O1 mode calculation of number of instructions.png>)
 
-
 ### 2) Compiltion using Ofast mode
 We now perform the RISC-V compilation of the C code using ofast mode using the following command : 
 
@@ -55,7 +54,7 @@ We now perform the RISC-V compilation of the C code using ofast mode using the f
 ![Alt text](<Ofast mode riscv compiling.png>)
 
 And again give the command :
-<mark>riscv64-unknown-elf-objdump -d sum1ton.o | less</mark> to perform see the assembly level instructions.We count the number of instructions in the same manner and find it to be 11 as well.
+<mark>riscv64-unknown-elf-objdump -d sum1ton.o | less</mark> to see the assembly level instructions.We count the number of instructions in the same manner and find it to be 11 as well.
 
 ![Alt text](<Ofast mode calculation of number of instructions.png>)
 
