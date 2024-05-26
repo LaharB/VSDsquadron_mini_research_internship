@@ -16,9 +16,9 @@ We write the required C code and put the value of n = 5
 
 Next we compile this C code and execute it using the gcc compiler using the respective commands -
 
-<mark>gcc sum1ton.c</mark>
+``gcc sum1ton.c``
 
-<mark>./a.out</mark>
+``./a.out``
 
 ![Alt text](<c code output.png>)
 
@@ -27,7 +27,7 @@ The next step is to compile the same code using RISC-V compiler.We use two modes
 ### 1) Compiltion using O1 mode 
 We do the compilation using the command : 
 
-<mark>riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+``riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c``
 
 The object file **sum1ton.o** is created 
 
@@ -35,7 +35,7 @@ The object file **sum1ton.o** is created
 
 After the compilation and creation of object file, we go to a new terminal and use **cat sum1ton.c** to display the code on the terminal and use the following command to see the assembly level instructions : 
 
-<mark>riscv64-unknown-elf-objdump -d sum1ton.o | less</mark>
+``riscv64-unknown-elf-objdump -d sum1ton.o | less``
 
 **Note** : We use **| less** to see less number of instructions and our main concern is with the **main()** part of the code so we use **/main** to go that part and press **n** to enter it as shown: 
 
@@ -49,12 +49,12 @@ Then we count the number of instructions for the execution of the **main()** par
 ### 2) Compiltion using Ofast mode
 We now perform the RISC-V compilation of the C code using ofast mode using the following command : 
 
-<mark>riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+``riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c``
 
 ![Alt text](<Ofast mode riscv compiling.png>)
 
 And again give the command :
-<mark>riscv64-unknown-elf-objdump -d sum1ton.o | less</mark> to see the assembly level instructions.We count the number of instructions in the same manner and find it to be 11 as well.
+``riscv64-unknown-elf-objdump -d sum1ton.o | less`` to see the assembly level instructions.We count the number of instructions in the same manner and find it to be 11 as well.
 
 ![Alt text](<Ofast mode calculation of number of instructions.png>)
 
