@@ -6,7 +6,7 @@ The first task to be performed is the installation of RISC-V toolchain.
 
 After the installation is complete, we write a C code to perfrom the sum of numbers from 1 to n. For this we open any editor (*here we have used leafpad* ),we open leafpad by the following command-
 
-<mark>leafpad sum1ton.c</mark>
+``leafpad sum1ton.c``
 
 ![Alt text](<opening leafpad.png>)
 
