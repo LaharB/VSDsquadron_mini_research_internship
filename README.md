@@ -1,6 +1,7 @@
 # VSDSquadron_mini
 
-## Task 1
+<details> 
+    <summary>Task 1</summary>
 
 The first task to be performed is the installation of RISC-V toolchain.
 
@@ -62,7 +63,10 @@ There is no difference in the number of instructions while using O1 mode and Ofa
 
 Thus we perform TASK 1 successfully.
 
-## Task 2
+</details>
+
+<details>
+    <summary>Task 2</summary>
 
 The second task is to identify various RISC-V instruction types  and their exact 32-bit instruction type format for all the given instructions.
 
@@ -347,6 +351,8 @@ SLL r15, r1, r2
   rd=01111 
   funct7=0000000
   32-bit instruction : **0000000 00010 00001 001 01111 0110011**
+
+</details>
 
 
 
