@@ -1,7 +1,7 @@
 # VSDSquadron_mini
 
 <details> 
-    <summary>Task 1</summary>
+    <summary>Task 1 </summary>
 
 The first task to be performed is the installation of RISC-V toolchain.
 
@@ -354,11 +354,112 @@ SLL r15, r1, r2
 
 </details>
 
+<details> 
+    <summary>Task 3</summary>
+The third task is to use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.
 
+We will use the verilog code and testbench from the given GitHub repository : https://github.com/vinayrayapati/rv32i.git
 
+## Steps to follow :
 
+1. We clone the above mentioned repository using the command : 
+     
+   ``git clone https://github.com/vinayrayapati/iiitb_rv32i``
 
+2. Then we go to the ``iiitb_rv32i`` usign the command :
+   
+   ``cd iiitb_rv32i``
 
+We can observe that the instructions in verilog code are hardcoded by the designer and thus we observe a difference in the 32-bit instruction pattern between the ones we got in **Task 2** and the latter.Same goes for the Hex codes as well.
+![Alt text](<Task 3/Hardcoded instructions.png>)
+
+### Difference between Standard RISC-V instructions and Hardcoded instructions :
+
+|                  	| Hardcoded Instructions 	| Standard RISC-V Instructions 	|
+|:----------------:	|:----------------------:	|:----------------------------:	|
+|  ADD r6, r2, r1  	|      32'h02208300      	|         32'h00110333         	|
+|  SUB r7, r1, r2  	|      32'h02209380      	|         32'h202083B3         	|
+|  AND r8, r1, r3  	|      32'h0230a400      	|         32'h0030F433         	|
+|   OR r9, r2, r5  	|      32'h02513480      	|         32'h005164B3         	|
+|  XOR r10, r1, r4 	|      32'h0240c500      	|         32'h0040C533         	|
+|  SLT r11, r2, r4 	|      32'h02415580      	|         32'h004125B3         	|
+|  ADDI r12, r4, 5 	|      32'h00520600      	|         32'h00520613         	|
+|   SW r3, r1, 2   	|      32'h00209181      	|         32'h0030A123         	|
+| SRL r16, r14, r2 	|      32'h00271803      	|         32'h00275833         	|
+|  BNE r0, r1, 20  	|      32'h01409002      	|         32'h00101A63         	|
+|  BEQ r0, r0, 15  	|      32'h00f00002      	|         32'h000007E3         	|
+|   LW r13, r1, 2  	|      32'h00208681      	|         32'h0020A683         	|
+|  SLL r15, r1, r2 	|      32'h00208783      	|         32'h002097B3         	|
+
+3. We run and simulate the verilog code using the commands :  
+   
+   ``iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v``
+
+   ``./iiitb_rv32i``
+  
+  A dumpfile **iiitb_rv32i.vcd** gets created.
+
+4. Finally we use the command ``gtkwave iiitb_rv32i.vcd`` to observe the ouput waveform using gtkwave.
+
+### Observing the output waveform of executed instructions:
+
+Following are the waveforms starting from top to bottom : 
+
+- Clock
+- Instruction code
+- Input register A
+- Input register B
+- Output Waveform 
+
+``Note:The **output waveform** and the **instruction code waveform** are delayed by one clock cycle wrt to the input registers waveform.``
+
+1. ``add r6, r2, r1`` 
+
+   ![Alt text](<Task 3/1.ADD.png>) 
+
+2. ``sub r7, r1, r2``
+
+   ![Alt text](<Task 3/2.SUB.png>)
+
+3. ``and r8, r1, r3``
+   
+   ![Alt text](<Task 3/3.AND.png>)
+
+4.  ``or r9, r2, r5``
+
+    ![Alt text](<Task 3/4.OR.png>)
+
+5.  ``xor r10, r1, r4``
+
+    ![Alt text](<Task 3/5.XOR.png>)
+
+6.  ``slt r11, r2, r4``
+
+    ![Alt text](<Task 3/6.SLT.png>)
+
+7.  ``addi r12, r4, 5``
+
+    ![Alt text](<Task 3/7.ADDI.png>)
+
+8.  ``sw r3, r1, 2``
+
+    ![Alt text](<Task 3/8.SW.png>)
+
+9.  ``lw r13, r1, 2``
+
+    ![Alt text](<Task 3/9.LW.png>)
+
+10. ``beq r0, r0, 15``
+
+    ![Alt text](<Task 3/10.BEQ.png>)
+
+11. ``add r14, r2, r2``
+
+    ![Alt text](<Task 3/11.ADD.png>)
+
+Thus Task 3 is successfully performed.
+
+</details>
 
 
 
