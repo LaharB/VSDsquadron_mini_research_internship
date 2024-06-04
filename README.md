@@ -2,8 +2,14 @@
 
 <details> 
     <summary> Task 1 : Installation of RISC-V toolchain and compilation of C program using gcc and RISC-V compiler</summary>
+<<<<<<< HEAD
     
     The first step to be performed is the installation of RISC-V toolchain.
+=======
+
+
+The first step to be performed is the installation of RISC-V toolchain.
+>>>>>>> a5133074f35102169fdcd2be2d8baac7e49eea85
 
 After the installation is complete, we write a C code to perfrom the sum of numbers from 1 to n. For this we open any editor (*here we have used leafpad* ),we open leafpad by the following command-
 
@@ -68,9 +74,16 @@ Thus we perform TASK 1 successfully.
 ________________________________________________________________
 
 <details>
+<<<<<<< HEAD
     <summary>Task 2 : Identify various RISC-V instruction types and their exact 32-bit instruction type format</summary>  
     
     The task is to identify various RISC-V instruction types and their exact 32-bit instruction type format for all the given instructions.
+=======
+    <summary>Task 2 : Identify various RISC-V instruction types and their exact 32-bit instruction type format</summary>
+
+
+The second task is to identify various RISC-V instruction types and their exact 32-bit instruction type format for all the given instructions.
+>>>>>>> a5133074f35102169fdcd2be2d8baac7e49eea85
 
 ### What is RISC-V ?
 
@@ -359,10 +372,17 @@ SLL r15, r1, r2
 ________________________________________________________________
 
 <details> 
+<<<<<<< HEAD
     <summary>Task 3:Use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.</summary>  
     
     
     The task is to use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.
+=======
+    <summary>Task 3:Use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.</summary>
+
+
+The third task is to use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.
+>>>>>>> a5133074f35102169fdcd2be2d8baac7e49eea85
 
 We will use the verilog code and testbench from the given GitHub repository : https://github.com/vinayrayapati/rv32i.git
 
@@ -473,8 +493,12 @@ ________________________________________________________________
     <summary>Task 4 : To implement any digital circuit using VSDSquadron Mini RISC-V development board</summary>  
 
 
+<<<<<<< HEAD
 
     The task is to implement any digital circuit design using the VSDSquadron Mini RISC-V development board & then verify its fucntionality by uisng build and upload feature.
+=======
+The task is to implement any digital circuit design using the VSDSquadron Mini RISC-V development board & then verify its fucntionality by uisng build and upload feature.
+>>>>>>> a5133074f35102169fdcd2be2d8baac7e49eea85
 
 # Implementaion of 8x4 bit Single-Port Synchronous RAM 
 
