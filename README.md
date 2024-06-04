@@ -1,9 +1,9 @@
 # VSDSquadron_mini
 
 <details> 
-    <summary>Task 1 </summary>
+    <summary> Task 1 : Installation of RISC-V toolchain and compilation of C program using gcc and RISC-V compiler</summary>
 
-The first task to be performed is the installation of RISC-V toolchain.
+The first step to be performed is the installation of RISC-V toolchain.
 
 After the installation is complete, we write a C code to perfrom the sum of numbers from 1 to n. For this we open any editor (*here we have used leafpad* ),we open leafpad by the following command-
 
@@ -65,10 +65,12 @@ Thus we perform TASK 1 successfully.
 
 </details>
 
-<details>
-    <summary>Task 2</summary>
+________________________________________________________________
 
-The second task is to identify various RISC-V instruction types  and their exact 32-bit instruction type format for all the given instructions.
+<details>
+    <summary>Task 2 : Identify various RISC-V instruction types and their exact 32-bit instruction type format</summary>
+
+The second task is to identify various RISC-V instruction types and their exact 32-bit instruction type format for all the given instructions.
 
 ### What is RISC-V ?
 
@@ -354,8 +356,11 @@ SLL r15, r1, r2
 
 </details>
 
+________________________________________________________________
+
 <details> 
-    <summary>Task 3</summary>
+    <summary>Task 3:Use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.</summary>
+
 The third task is to use the RISC-V Core(Verilog netlist and testbench) and perform functional simulation experiment and analyse the waveform.
 
 We will use the verilog code and testbench from the given GitHub repository : https://github.com/vinayrayapati/rv32i.git
@@ -375,21 +380,21 @@ We can observe that the instructions in verilog code are hardcoded by the design
 
 ### Difference between Standard RISC-V instructions and Hardcoded instructions :
 
-|                  	| Hardcoded Instructions 	| Standard RISC-V Instructions 	|
-|:----------------:	|:----------------------:	|:----------------------------:	|
-|  ADD r6, r2, r1  	|      32'h02208300      	|         32'h00110333         	|
-|  SUB r7, r1, r2  	|      32'h02209380      	|         32'h202083B3         	|
-|  AND r8, r1, r3  	|      32'h0230a400      	|         32'h0030F433         	|
-|   OR r9, r2, r5  	|      32'h02513480      	|         32'h005164B3         	|
-|  XOR r10, r1, r4 	|      32'h0240c500      	|         32'h0040C533         	|
-|  SLT r11, r2, r4 	|      32'h02415580      	|         32'h004125B3         	|
-|  ADDI r12, r4, 5 	|      32'h00520600      	|         32'h00520613         	|
-|   SW r3, r1, 2   	|      32'h00209181      	|         32'h0030A123         	|
-| SRL r16, r14, r2 	|      32'h00271803      	|         32'h00275833         	|
-|  BNE r0, r1, 20  	|      32'h01409002      	|         32'h00101A63         	|
-|  BEQ r0, r0, 15  	|      32'h00f00002      	|         32'h000007E3         	|
-|   LW r13, r1, 2  	|      32'h00208681      	|         32'h0020A683         	|
-|  SLL r15, r1, r2 	|      32'h00208783      	|         32'h002097B3         	|
+|                 | Hardcoded Instructions | Standard RISC-V Instructions|
+|:---------------:|:----------------------:|:---------------------------:|
+| ADD r6,r2,r1    |      32'h02208300      |         32'h00110333        |
+| SUB r7,r1,r2    |      32'h02209380      |         32'h202083B3        |
+| AND r8,r1,r3    |      32'h0230a400      |         32'h0030F433        |
+| OR r9,r2,r5     |      32'h02513480      |         32'h005164B3        |
+| XOR r10,r1,r4   |      32'h0240c500      |         32'h0040C533        |
+| SLT r11,r2,r4   |      32'h02415580      |         32'h004125B3        |
+| ADDI r12,r4,5   |      32'h00520600      |         32'h00520613        |
+| SW r3,r1,2      |      32'h00209181      |         32'h0030A123        |
+| SRL r16,r14,r2  |      32'h00271803      |         32'h00275833        |
+| BNE r0, r1, 20  |      32'h01409002      |         32'h00101A63        |
+| BEQ r0, r0, 15  |      32'h00f00002      |         32'h000007E3        |
+| LW r13, r1, 2   |      32'h00208681      |         32'h0020A683        |
+| SLL r15, r1, r2 |      32'h00208783      |         32'h002097B3        |
 
 3. We run and simulate the verilog code using the commands :  
    
@@ -461,43 +466,114 @@ Thus Task 3 is successfully performed.
 
 </details>
 
+________________________________________________________________
 
+<details> 
+    <summary>Task 4</summary>
 
+Task 4 is to implement any digital circuit design using the VSDSquadron Mini RISC-V development board & then verify its fucntionality by uisng build and upload feature.
 
+# Implementaion of 8x4 bit Single-Port Synchronous RAM 
 
+## Overview 
 
+The project deals with the implementaion of a 8x4 bit Single-Port Synchronous RAM with the help of the **CH32V003 RISC-V processor** present in the **VSDSquadron Mini RISC-V development board**.There are 8 memory locations and each memory location is of 4 bits.There are also 3 control signals present in the design: 
+1. Clock 
+2. Write_enable
+3. Read_enable
 
+These control signals will control the 3 modes of operation of the RAM namely **Idle**, **Write** and **Read**
+The stored values in the memory location can be observed and verified through a set of output LEDs.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ Thus this project showcaces the functionality and verification of a RAM which is a very important digital logic design with the help of the VSD Squadron Mini Board. 
  
+## Components Required
+
+- VSDSquadron Mini RISC-V development board
+- Breadboard
+- Power Supply 
+- DIP Switch
+- Resistors 
+- Jumper wires
+- LEDs
+
+## Design Description and Circuit Connections
+
+THe VSDSquadron Mini RISC-V development board has 15 digital I/O pins,keeping this in mind ,we design the RAM accodrdingly :
+
+1. **Address Lines** : The number of address lines determines the addressable memory locations.For **n-bit** address lines ,we can address **2^n** memeory locations.We choose the address bits to be of 3-bits to address 8 memory locations which will use 3 Digital input pins.
+  
+    | **Address Line Values** | **Memory Location**  |
+    |:-----------------------:|:--------------------:|
+    |           000           |           0          |
+    |           001           |           1          |
+    |           010           |           2          |
+    |           011           |           3          |
+    |           100           |           4          |
+    |           101           |           5          |
+    |           110           |           6          |
+    |           111           |           7          |
+  
+2. **Data lines** : The number of data lines determines the width of the data bus.We choose the input data line to be of 4-bits for giving 4-bit input data **(values ranging from 0-15)** which will be using 4 digital I/O pins.Also to observe this data ,we will require a 4-bit output data line **connected to 4 LEDs** which will also use another 4 digital I/O pins.
+
+    | **4-bit Input Data** | **Value in Decimal** |
+    |:--------------------:|:--------------------:|
+    |         0000         |           0          |
+    |         0001         |           1          |
+    |         0010         |           2          |
+    |         0011         |           3          |
+    |         0100         |           4          |
+    |         0101         |           5          |
+    |         0110         |           6          |
+    |         0111         |           7          |
+    |         1000         |           8          |
+    |         1001         |           9          |
+    |         1010         |          10          |
+    |         1011         |          11          |
+    |         1100         |          12          |
+    |         1101         |          13          |
+    |         1110         |          14          |
+    |         1111         |          15          |
+
+3. **Control Signals** :
+  - clk : Clock signal synchronises the operations 
+  - write enable(WE) : Enables the writing mode to write data into the memory.
+  - read enable(RE) : Enables the reading mode to read data from the        memory.
+
+    |                  |  **Modes** |             |
+    |------------------|------------|-------------|
+    | **clk**          | 0(Idle)    | 1(Active)   |
+    | **write_enable** | 1(Write)   | 0(No write) |
+    | **read_enable**  | 0(No Read) | 1(Read)     |
+
+4. **Memory Indicator** : This will generate an ouput signal whenever data is written and succesfuly stored in the memory.
+
+We choose 1-bit input data line for each of these control signal and memory indicator signal which will further use 4 digital I/O pins.
+
+So in total we will be using all the 15 Digital I/O pins for our design.
+
+Individual ends of the DIP switches **for giving input data and control signals** are connected to the power supply and their other ends are connected to ground through individual resistors **(This ensures that the pin reads LOW when the switch is open)** and further to the digital I/O pins of the VSDSquadron Mini Board for detecting a **High** or **Low** state for inputs **1** and **0** respectively.
+
+Similarly individual anodes of the 5 **(4 for output data and 1 for memory indication)** LEDs will be connected to the respective 4 digital I/O pins through respective resistors and their cathodes will be connencted to the ground.
+
+ ## Table for PIN Connection
+
+|          **Component**         | **PIN Number** |
+|:------------------------------:|:--------------:|
+|    DIP Switch(4-bit Data In)   |     PD0-PD3    |
+| DIP Switch(3-bit Address Line) |     PD4-PD6    |
+|   Output LEDs(4-bit Data Out)  |     PC0-PC3    |
+|        Memory Indicator        |       PD7      |
+|               VCC              |       Vin      |
+|             Ground             |       GND      |   
+  
+## PIN out diagram
 
 
 
 
 
+</details>
 
-
+________________________________________________________________
 
