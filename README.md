@@ -469,9 +469,9 @@ Thus Task 3 is successfully performed.
 ________________________________________________________________
 
 <details> 
-    <summary>Task 4</summary>
+    <summary>Task 4 : To implement any digital circuit using VSDSquadron Mini RISC-V development board</summary>
 
-Task 4 is to implement any digital circuit design using the VSDSquadron Mini RISC-V development board & then verify its fucntionality by uisng build and upload feature.
+The task is to implement any digital circuit design using the VSDSquadron Mini RISC-V development board & then verify its fucntionality by uisng build and upload feature.
 
 # Implementaion of 8x4 bit Single-Port Synchronous RAM 
 
