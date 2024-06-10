@@ -572,7 +572,7 @@ Similarly individual anodes of the 5 **(4 for output data and 1 for memory indic
   
 ## PIN out diagram
 
-
+![alt text](<Task 4/RAM_connections.png>)
 
 
 
