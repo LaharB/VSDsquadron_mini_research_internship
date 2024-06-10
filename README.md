@@ -574,9 +574,130 @@ Similarly individual anodes of the 5 **(4 for output data and 1 for memory indic
 
 ![alt text](<Task 4/RAM_connections.png>)
 
+## Code 
+```c
+
+#include <ch32v00x.h>
+#include <debug.h>
+#include <stdint.h>
+
+#define NUM_ADDRESSES 8
+#define DATA_WIDTH 4
+
+// RAM storage
+uint8_t RAM[NUM_ADDRESSES];
+
+// Function prototypes
+uint8_t ReadDIPSwitches(uint8_t pins);
+void WriteLEDs(uint8_t pins, uint8_t data);
+void GPIO_Config(void);
+
+int main(void) {
+
+    uint8_t dataInput, address;
+    uint8_t dataOutput;
+    uint8_t memoryIndicator = 0;
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+    
+    while (1) {
+        // Read DIP switches
+        dataInput = ReadDIPSwitches(GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3);
+        address = ReadDIPSwitches(GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6);
+
+        // Read control signals
+        uint8_t clock = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_0);
+        uint8_t readEnable = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2);
+        uint8_t writeEnable = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_3);
 
 
+        if (clock) {
+            if (writeEnable && !readEnable) {
+                // Write to RAM
+                RAM[address] = dataInput;
+                memoryIndicator = 1;
+                if (memoryIndicator) {
+                GPIO_WriteBit(GPIOA, GPIO_Pin_1, SET);   
+                } else {
+                GPIO_WriteBit(GPIOA, GPIO_Pin_1, RESET);    
+                }
+            } else if (readEnable && !writeEnable) {
+                // Read from RAM
+                dataOutput = RAM[address];
+                WriteLEDs(GPIO_Pin_7 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6, dataOutput);
+                memoryIndicator = 0;
+            }else if (!writeEnable && !readEnable){
+                GPIO_WriteBit(GPIOC, GPIO_Pin_7, RESET);
+                GPIO_WriteBit(GPIOD, GPIO_Pin_4, RESET);
+                GPIO_WriteBit(GPIOD, GPIO_Pin_5, RESET);
+                GPIO_WriteBit(GPIOD, GPIO_Pin_6, RESET);
+            }    
+            
+        }
 
+    }
+}
+
+void GPIO_Config(void){
+
+    GPIO_InitTypeDef GPIO_InitStructure={0};
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); // to Enable the clock for Port A 
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to Enable the clock for Port C
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to Enable the clock for Port D
+
+    // Initialize DIP switches (PC0-PC6) as input without pull-up resistors
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Input with pull-up 
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+    // Initialize control signals (PD0,PD2 adn PD3) as input without pull-up resistors
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_3;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Input with pull-up
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    //Initialize LEDs (PD4-PD6) as push-pull output
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Push-pull output
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Speed setting for output
+    GPIO_Init(GPIOD, &GPIO_InitStructure);// 
+
+    //Initialize LEDs (PD7) as push-pull output
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Push-pull output
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Speed setting for output
+    GPIO_Init(GPIOC, &GPIO_InitStructure);//
+}
+//Masking used to read inputs 
+uint8_t ReadDIPSwitches(uint8_t pins) {
+    uint8_t value = 0;
+    //input data
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_0 & pins)) value |= 0x01;  //LSB 
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_1 & pins)) value |= 0x02;
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_2 & pins)) value |= 0x04;
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_3 & pins)) value |= 0x08;  //MSB
+    //address
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_4 & pins)) value |= 0x10;  //LSB
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_5 & pins)) value |= 0x20;
+    if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_6 & pins)) value |= 0x40;  //MSB
+
+    return value;
+}
+//Masking used to give outputs 
+void WriteLEDs(uint8_t pins, uint8_t data) {
+    //output data
+    GPIO_WriteBit(GPIOC, GPIO_Pin_7 & pins, (data & 0x01) ? Bit_SET : Bit_RESET);  //LSB
+    GPIO_WriteBit(GPIOD, GPIO_Pin_4 & pins, (data & 0x02) ? Bit_SET : Bit_RESET);
+    GPIO_WriteBit(GPIOD, GPIO_Pin_5 & pins, (data & 0x04) ? Bit_SET : Bit_RESET);
+    GPIO_WriteBit(GPIOD, GPIO_Pin_6 & pins, (data & 0x08) ? Bit_SET : Bit_RESET);  //MSB
+}
+
+```
+## Application Video
+
+<https://drive.google.com/file/d/1KZ48Tlj86iBYG1Z8yTLqnzmClfjGrVu6/view?usp=sharing>
 
 </details>
 ________________________________________________________________
