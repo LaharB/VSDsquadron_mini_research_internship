@@ -698,5 +698,4 @@ void WriteLEDs(uint8_t pins, uint8_t data) {
 <https://drive.google.com/file/d/1KZ48Tlj86iBYG1Z8yTLqnzmClfjGrVu6/view?usp=sharing>
 
 </details>
-_____________________________________________________________________________
 
