@@ -496,7 +496,7 @@ The stored values in the memory location can be observed and verified through a 
 - Breadboard
 - Power Supply 
 - DIP Switch
-- Resistors 
+- Resistors(1k) 
 - Jumper wires
 - LEDs
 
@@ -549,25 +549,23 @@ THe VSDSquadron Mini RISC-V development board has 15 digital I/O pins,keeping th
     | **write_enable** | 1(Write)   | 0(No write) |
     | **read_enable**  | 0(No Read) | 1(Read)     |
 
-4. **Memory Indicator** : This will generate an ouput signal whenever data is written and succesfuly stored in the memory.
 
 We choose 1-bit input data line for each of these control signal and memory indicator signal which will further use 4 digital I/O pins.
 
-So in total we will be using all the 15 Digital I/O pins for our design.
+So in total we will be using all the 14 Digital I/O pins for our design.
 
 Individual ends of the DIP switches **for giving input data and control signals** are connected to the power supply and their other ends are connected to ground through individual resistors **(This ensures that the pin reads LOW when the switch is open)** and further to the digital I/O pins of the VSDSquadron Mini Board for detecting a **High** or **Low** state for inputs **1** and **0** respectively.
 
-Similarly individual anodes of the 5 **(4 for output data and 1 for memory indication)** LEDs will be connected to the respective 4 digital I/O pins through respective resistors and their cathodes will be connencted to the ground.
+Similarly individual anodes of the 4 **(for output data)** LEDs will be connected to the respective 4 digital I/O pins through respective resistors and their cathodes will be connencted to the ground.
 
  ## Table for PIN Connection
 
 |          **Component**         | **PIN Number** |
 |:------------------------------:|:--------------:|
-|    DIP Switch(4-bit Data In)   |     PD0-PD3    |
-| DIP Switch(3-bit Address Line) |     PD4-PD6    |
-|   Output LEDs(4-bit Data Out)  |     PC0-PC3    |
-|        Memory Indicator        |       PD7      |
-|               VCC              |       Vin      |
+|    DIP Switch(4-bit Data In)   |     PC0-PC3    |
+| DIP Switch(3-bit Address Line) |     PC4-PC6    |
+|   Output LEDs(4-bit Data Out)  |PC7,PD0,PD2,PD3 |
+|               VCC              |       3.3V     |
 |             Ground             |       GND      |   
   
 ## PIN out diagram
@@ -700,5 +698,5 @@ void WriteLEDs(uint8_t pins, uint8_t data) {
 <https://drive.google.com/file/d/1KZ48Tlj86iBYG1Z8yTLqnzmClfjGrVu6/view?usp=sharing>
 
 </details>
-________________________________________________________________
+_____________________________________________________________________________
 
