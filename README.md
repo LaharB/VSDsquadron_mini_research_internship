@@ -694,7 +694,7 @@ void WriteLEDs(uint8_t pins, uint8_t data) {
 ```
 ## Application Video
 
-<https://drive.google.com/file/d/1KZ48Tlj86iBYG1Z8yTLqnzmClfjGrVu6/view?usp=sharing>
+<https://drive.google.com/file/d/1grkgjXnJnVo81AcIRYA-B7LDPSiYY8R1/view?usp=sharing>
 
 </details>
 
