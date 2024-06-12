@@ -550,7 +550,7 @@ THe VSDSquadron Mini RISC-V development board has 15 digital I/O pins,keeping th
     | **read_enable**  | 0(No Read) | 1(Read)     |
 
 
-We choose 1-bit input data line for each of these control signal and memory indicator signal which will further use 4 digital I/O pins.
+We choose 1-bit input data line for each of these control signal  which will use 3 digital I/O pins.
 
 So in total we will be using all the 14 Digital I/O pins for our design.
 
@@ -691,7 +691,6 @@ void WriteLEDs(uint8_t pins, uint8_t data) {
     GPIO_WriteBit(GPIOD, GPIO_Pin_5 & pins, (data & 0x04) ? Bit_SET : Bit_RESET);
     GPIO_WriteBit(GPIOD, GPIO_Pin_6 & pins, (data & 0x08) ? Bit_SET : Bit_RESET);  //MSB
 }
-
 ```
 ## Application Video
 
